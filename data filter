@@ -1,0 +1,22 @@
+import numpy as np
+# modified from https://gist.github.com/Miladiouss/6ba0876f0e2b65d0178be7274f61ad2f
+
+
+def filter(x, l, i): # x -> data, l -> labels, i -> unique label/s to be filtered
+    """
+    x: trainset.train_data or testset.test_data
+    l: trainset.train_labels or testset.test_labels
+    i: class label, a number or series between 0 to 9
+    return: x_i
+    """
+
+    # Convert to a numpy array
+    l = np.array(l)
+    # Locate position of labels that equal to i
+    pos_i = np.argwhere(np.in1d(l, i))
+    # Convert the result into a 1-D list
+    pos_i = list(pos_i[:,0])
+    # Collect all data that match the desired label as well as the labels themselves
+    x_i = np.array([x[j] for j in pos_i])
+    l_i = np.array([l[j] for j in pos_i])
+    return x_i, l_i
