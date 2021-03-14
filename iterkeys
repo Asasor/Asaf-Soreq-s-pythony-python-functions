@@ -1,3 +1,4 @@
+import numpy as np
 # modified from https://stackoverflow.com/questions/3403973/fast-replacement-of-values-in-a-numpy-array
 # this function takes a series of labels (of any kind of number) and turns all of the unique labels into a range by size (0 to nth unique label) quickly.
 # amount of unique labels nearly doesn't affect speed 
