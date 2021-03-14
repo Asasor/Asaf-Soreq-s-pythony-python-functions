@@ -1,0 +1,20 @@
+# modified from https://stackoverflow.com/questions/3403973/fast-replacement-of-values-in-a-numpy-array
+# this function takes a series of labels (of any kind of number) and turns all of the unique labels into a range by size (0 to nth unique label) quickly.
+# amount of unique labels nearly doesn't affect speed 
+
+# example:
+# input -> [3,2,4,4,2]
+# output -> [1,0,2,2,1]
+
+
+# 15.9 µs for 10 labels (3 unique ints)
+# 180 µs for 1000 labels (10 unique ints)
+# 18.5 µs for 100000 labels (10 unique ints)
+# 1.87 s for 10000000 labels (10 unique ints)
+
+
+def iterkeys(arr):
+    ov = np.unique(arr)
+    mp = np.empty(max(arr)+1, dtype=int)
+    mp[ov] = np.arange(ov.size)
+    return mp[arr]
