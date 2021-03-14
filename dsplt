@@ -1,0 +1,14 @@
+import numpy as np
+import matplotlib.pyplot as plt
+# plot images with a CIFAR-10 format.
+
+
+def dsplt(data, labels, label_tags=None, img_idx=0):  # dsplt -> DataSet PLoT
+    img = data[img_idx]
+    print("shape: ", img.shape)
+    if not label_tags:
+      print("label: ", labels[img_idx])
+    else:
+      print("label: ", label_tags[labels[img_idx][0]])
+    plt.imshow(img) 
+    plt.show()
